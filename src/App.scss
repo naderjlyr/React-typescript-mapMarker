@@ -56,7 +56,10 @@ iframe {
 
 .container {
   max-width: 1600px;
-  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 3%;
 }
 
 .mb-3 {
@@ -69,6 +72,30 @@ iframe {
   padding: 0 2rem;
 }
 
-.section__header {
-  @include flex(center, space-between);
+//Custom Layout Properties
+
+.listing-container {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  align-items: center;
+  gap: 20px;
+  .cm-card-item {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0px 4px 5px 5px #f3f3fb;
+    .left-content {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+    }
+    .right-content {
+      display: flex;
+    }
+  }
 }
