@@ -5,6 +5,7 @@ export enum EFetchState {
   ERROR = "ERROR",
 }
 export type TJobData = {
+  id?: number;
   job_title: string;
   organization_name: string;
   location_coordinates: string[];
