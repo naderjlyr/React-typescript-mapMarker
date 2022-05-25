@@ -1,24 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useEffect } from "react";
+import { useFetchData } from "./hooks/useApi";
+import { EFetchState } from "./types/api";
+import { LoadingSpinner } from "@textkernel/oneui";
+import "@textkernel/oneui/dist/oneui.min.css";
 function App() {
+  const [jobs, fetchState, getJobs] = useFetchData();
+
+  useEffect(() => {
+    getJobs();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      {fetchState === EFetchState.LOADING && (
+        <LoadingSpinner
+          centerIn={"viewport"}
+          context="brand"
+          hidden={false}
+          size={undefined}
         >
-          Learn React
-        </a>
-      </header>
+          Loading...
+        </LoadingSpinner>
+      )}
+      {/* {jobs.map((item) => (
+        <div>
+          <li>{item?.job_title}</li>
+          <li>{item?.organization_name}</li>
+          <li>{item?.location_coordinates}</li>
+        </div>
+      ))} */}
     </div>
   );
 }
