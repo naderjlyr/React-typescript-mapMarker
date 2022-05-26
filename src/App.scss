@@ -84,7 +84,7 @@ iframe {
   justify-content: space-around;
   position: relative;
   .job-listing {
-    padding: 10px;
+    padding: 30px;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -103,6 +103,10 @@ iframe {
     box-shadow: 0px 4px 5px 5px #f3f3fb;
     flex-wrap: wrap;
     gap: 20px;
+    transition: $primary-transition;
+    &:hover {
+      background-color: rgb(240, 240, 240);
+    }
     .left-content {
       display: flex;
       flex-direction: row;
@@ -110,18 +114,12 @@ iframe {
     }
 
     .bottom {
+      display: flex;
       flex-basis: 100%;
+      justify-content: space-between;
     }
   }
 }
-
-// .map-container {
-//   height: 100%;
-//   width: 100%;
-// }
-
-// @media (max-width: 767px) {
-//   .map-container {
-//     width: 100vw;
-//   }
-// }
+.cm-stepper-button {
+  background-color: $primary-color;
+}

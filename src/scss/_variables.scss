@@ -1,6 +1,6 @@
 /* Color Variables*/
 
-$body-bg: #fafafc;
+$body-bg: #fafafa;
 $primary-color: #e0005d;
 $primary-text-color: #000;
 $white: #fff;
@@ -17,3 +17,7 @@ $header-shrink-height: 5rem;
 $border-radius: 30px;
 $mobile-width: 600px;
 $tablet-width: 1024px;
+
+/* Transitions & Animations */
+
+$primary-transition: all 700ms ease;

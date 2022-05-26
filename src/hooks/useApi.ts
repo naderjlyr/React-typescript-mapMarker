@@ -1,5 +1,5 @@
 import { useState, useCallback } from "react";
-import { EFetchState, TJobData } from "../types/interfaces";
+import { EFetchState, TJobData } from "../types/data-models";
 import axiosClient from "../config/axiosClient";
 export function useFetchData() {
   const [fetchState, setFetchState] = useState(EFetchState.DEFAULT);
@@ -9,7 +9,6 @@ export function useFetchData() {
   const getJobs = useCallback(async (applyData: Function) => {
     try {
       setFetchState(EFetchState.LOADING);
-
       const res = await axiosClient.get("info-recent-jobs");
       const resData = res.data as Array<TJobData>;
       applyData(resData);

@@ -1,5 +1,5 @@
 import React, { memo, useState } from "react";
-import { TJobData } from "../types/interfaces";
+import { TJobData } from "../types/data-models";
 import {
   Heading,
   Button,
@@ -16,7 +16,7 @@ const CardItem = ({ job, onSelect, onRemove }: Props) => {
   return (
     <div className="cm-card-item">
       <div className="left-content">
-        <IconTextkernel context="brand" size={48} title="Textkernel" />
+        <IconTextkernel context="primary" size={48} title="Textkernel" />
         <div className="company-name">
           <Heading align="left" context="default" level="h4">
             {job.organization_name}
@@ -27,23 +27,29 @@ const CardItem = ({ job, onSelect, onRemove }: Props) => {
             {job.job_title}
           </Heading>
         </div>
-        <StepperButton
-          disabled={false}
-          icon="minus"
-          onClick={() => onRemove(job)}
-        />
       </div>
       <div className="bottom">
         <Button
-          context="brand"
+          context="primary"
           disabled={false}
           isBlock={false}
           isInline={false}
-          onClick={function noRefCheck() {}}
+          onClick={() => onSelect(job)}
           size="normal"
           type="submit"
         >
           Locate the Job
+        </Button>
+        <Button
+          context="bad"
+          disabled={false}
+          isBlock={false}
+          isInline={false}
+          onClick={() => onRemove(job)}
+          size="normal"
+          type="submit"
+        >
+          Delete
         </Button>
       </div>
     </div>

@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useFetchData } from "./hooks/useApi";
-import { EFetchState, TJobData } from "./types/interfaces";
+import { EFetchState, TJobData, TJobPosition } from "./types/data-models";
 import {
   LoadingSpinner,
   Header,
   Heading,
   IconJobfeed,
   Input,
+  ContentPlaceholder,
 } from "@textkernel/oneui";
 import { MemoizedCard } from "./components/CardItem";
-import LeafletMap from "./components/LeafletMap";
+import MemoizedMap from "./components/LeafletMap";
 import "@textkernel/oneui/dist/oneui.min.css";
 import "./App.scss";
 import uniqueId from "./helpers/id-generator";
@@ -18,6 +19,11 @@ function App() {
   // const { fetchedJobs, fetchState, getJobs } = useFetchData();
   const [jobs, setJobs] = useState<TJobData[]>([]);
   const { fetchState, getJobs: fetchJobs } = useFetchData();
+  const [jobPosition, setJobPosition] = useState<TJobPosition<number>>({
+    lat: 52.390741909089954,
+    lng: 4.937249840694807,
+  });
+  const [chosenJob, setChosenJob] = useState<TJobData>({} as TJobData);
 
   useEffect(() => {
     const transformJobs = (jobsObj: TJobData[]) => {
@@ -27,6 +33,7 @@ function App() {
       setJobs(dataWithID);
       console.log(dataWithID);
     };
+    console.log(fetchState);
     fetchJobs(transformJobs);
   }, [fetchJobs]);
 
@@ -45,7 +52,14 @@ function App() {
   //   //   setFilteredJobs(newFilteredJobs);
   //   // }
   // };
-
+  const findJobPosition = (job: TJobData) => {
+    const gCoordinate = {
+      lat: Number(job.location_coordinates[0]),
+      lng: Number(job.location_coordinates[1]),
+    };
+    setJobPosition(gCoordinate);
+    setChosenJob(job);
+  };
   return (
     <div className="app-container">
       <Header
@@ -55,37 +69,57 @@ function App() {
           title: "Jobfeed",
         }}
       ></Header>
-      <Heading align="left" context="default" level="h1">
-        <IconJobfeed context="info" size={48} title="Jobfeed" />
-        Latest <span>Jobs</span>
-      </Heading>
 
       <div className="main-content">
         <div className="job-listing">
           {fetchState === EFetchState.LOADING && (
-            <LoadingSpinner
-              centerIn={"viewport"}
-              context="primary"
-              hidden={false}
-              size={undefined}
-            >
-              Loading...
-            </LoadingSpinner>
+            <>
+              <ContentPlaceholder
+                duration={1}
+                height={undefined}
+                width={100}
+                withoutMargin={false}
+              />
+              <ContentPlaceholder
+                duration={1}
+                height={undefined}
+                width={55}
+                withoutMargin={false}
+              />
+              <ContentPlaceholder
+                duration={1}
+                height={undefined}
+                width={65}
+                withoutMargin
+              />
+            </>
+            // <LoadingSpinner
+            //   centerIn={undefined}
+            //   context="primary"
+            //   hidden={false}
+            //   size={64}
+            // >
+            //   Loading...
+            // </LoadingSpinner>
           )}
-          {fetchState === EFetchState.ERROR && <div>asda</div>}
+          {fetchState === EFetchState.ERROR && (
+            <div>Error in retrieving jobs</div>
+          )}
           {fetchState === EFetchState.SUCCESS &&
             jobs?.map((job) => (
               <MemoizedCard
                 key={job.id}
                 job={job}
                 onRemove={deleteJobHandler}
-                onSelect={() => {
-                  return;
-                }}
+                onSelect={findJobPosition}
               />
             ))}
         </div>
-        <LeafletMap />
+        <MemoizedMap
+          job={chosenJob}
+          location={jobPosition}
+          position={jobPosition}
+        />
       </div>
     </div>
   );
