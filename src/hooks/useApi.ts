@@ -6,10 +6,10 @@ export function useFetchData() {
   const [fetchedJobs, setFetchedJobs] = useState<TJobData[]>([]);
   //   const [jobs, setJobs] = useState<Array<TJobData>>([]);
 
-  const getJobs = useCallback(async (applyData: Function) => {
+  const getJobs = useCallback(async (url: string, applyData: Function) => {
     try {
       setFetchState(EFetchState.LOADING);
-      const res = await axiosClient.get("info-recent-jobs");
+      const res = await axiosClient.get(url);
       const resData = res.data as Array<TJobData>;
       applyData(resData);
       setFetchState(EFetchState.SUCCESS);

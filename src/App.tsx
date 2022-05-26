@@ -34,7 +34,7 @@ function App() {
       setJobs(dataWithID);
       setSearchedJobs(dataWithID);
     };
-    fetchJobs(transformJobs);
+    fetchJobs("info-recent-jobs", transformJobs);
   }, [fetchJobs]);
 
   const filterBySearch = (searchQuery: string) => {
@@ -51,10 +51,10 @@ function App() {
   };
 
   const deleteJobHandler = (job: TJobData) => {
-    const newJobs = jobs.filter((originalJob) => {
+    const newJobs = searchedJobs.filter((originalJob) => {
       return job.id !== originalJob.id;
     });
-    setJobs(newJobs);
+    setSearchedJobs(newJobs);
   };
 
   const findJobPosition = (job: TJobData) => {
