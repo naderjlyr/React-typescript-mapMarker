@@ -5,7 +5,7 @@ import Leaflet from "leaflet";
 import { TJobData, TJobPosition } from "../types/data-models";
 import "leaflet/dist/leaflet.css";
 import pinFile from "../assets/images/pin.svg";
-interface Props {
+interface IProps {
   location: TJobPosition<number>;
   job: TJobData;
   position?: TJobPosition<number>;
@@ -21,7 +21,7 @@ const pinIcon = Leaflet.icon({
   iconAnchor: [29, 68],
   popupAnchor: [0, -75],
 });
-const LeafletMap = ({ location, job, position }: Props) => {
+const LeafletMap = ({ location, job, position }: IProps) => {
   return (
     <MapContainer
       center={[52.390741909089954, 4.937249840694807]}

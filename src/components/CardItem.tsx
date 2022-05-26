@@ -6,13 +6,13 @@ import {
   IconTextkernel,
   StepperButton,
 } from "@textkernel/oneui";
-interface Props {
+interface IProps {
   job: TJobData;
   onSelect: (job: TJobData) => void;
   onRemove: (job: TJobData) => void;
 }
 
-const CardItem = ({ job, onSelect, onRemove }: Props) => {
+const CardItem = ({ job, onSelect, onRemove }: IProps) => {
   return (
     <div className="cm-card-item">
       <div className="left-content">

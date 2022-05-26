@@ -75,11 +75,14 @@ iframe {
 }
 
 //Custom Layout Properties
-
+.cm-search-container {
+  input {
+    margin-right: 10px;
+  }
+}
 .main-content {
   align-items: center;
   display: flex;
-  flex: 1 1;
   flex-direction: row;
   justify-content: space-around;
   position: relative;
@@ -88,7 +91,7 @@ iframe {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 50%;
+    width: 70%;
     overflow-y: scroll;
     height: 100vh;
   }
