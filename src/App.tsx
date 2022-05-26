@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useFetchData } from "./hooks/useApi";
 import { EFetchState, TJobData } from "./types/interfaces";
 import {
@@ -12,13 +12,40 @@ import { MemoizedCard } from "./components/CardItem";
 import LeafletMap from "./components/LeafletMap";
 import "@textkernel/oneui/dist/oneui.min.css";
 import "./App.scss";
+import uniqueId from "./helpers/id-generator";
+
 function App() {
-  const [jobs, fetchState, getJobs] = useFetchData();
+  // const { fetchedJobs, fetchState, getJobs } = useFetchData();
+  const [jobs, setJobs] = useState<TJobData[]>([]);
+  const { fetchState, getJobs: fetchJobs } = useFetchData();
 
   useEffect(() => {
-    getJobs();
-    console.log("something");
-  }, []);
+    const transformJobs = (jobsObj: TJobData[]) => {
+      const dataWithID = jobsObj.map((job) =>
+        Object.assign({ id: uniqueId() }, job)
+      );
+      setJobs(dataWithID);
+      console.log(dataWithID);
+    };
+    fetchJobs(transformJobs);
+  }, [fetchJobs]);
+
+  const deleteJobHandler = (job: TJobData) => {
+    const newJobs = jobs.filter((originalJob) => {
+      return job.id !== originalJob.id;
+    });
+    setJobs(newJobs);
+  };
+  //   // if (jobs.length === filterJobs.length) {
+  //   //   setFilteredJobs(newJobs);
+  //   // } else {
+  //   //   const newFilteredJobs = filteredJobs.filter((originalJob) => {
+  //   //     return job.id !== originalJob.id;
+  //   //   });
+  //   //   setFilteredJobs(newFilteredJobs);
+  //   // }
+  // };
+
   return (
     <div className="app-container">
       <Header
@@ -47,13 +74,11 @@ function App() {
           )}
           {fetchState === EFetchState.ERROR && <div>asda</div>}
           {fetchState === EFetchState.SUCCESS &&
-            jobs.map((job) => (
+            jobs?.map((job) => (
               <MemoizedCard
                 key={job.id}
                 job={job}
-                onRemove={() => {
-                  return;
-                }}
+                onRemove={deleteJobHandler}
                 onSelect={() => {
                   return;
                 }}

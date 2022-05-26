@@ -19,20 +19,18 @@ const CardItem = ({ job, onSelect, onRemove }: Props) => {
         <IconTextkernel context="brand" size={48} title="Textkernel" />
         <div className="company-name">
           <Heading align="left" context="default" level="h4">
-            company name
+            {job.organization_name}
           </Heading>
         </div>
         <div className="job-name">
           <Heading align="left" context="default" level="h4">
-            Job Title
+            {job.job_title}
           </Heading>
         </div>
-      </div>
-      <div className="right-content">
         <StepperButton
           disabled={false}
           icon="minus"
-          onClick={function noRefCheck() {}}
+          onClick={() => onRemove(job)}
         />
       </div>
       <div className="bottom">

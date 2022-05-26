@@ -88,7 +88,7 @@ iframe {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    width: 30%;
+    width: 50%;
     overflow-y: scroll;
     height: 100vh;
   }
@@ -108,9 +108,7 @@ iframe {
       flex-direction: row;
       align-items: center;
     }
-    .right-content {
-      display: flex;
-    }
+
     .bottom {
       flex-basis: 100%;
     }
