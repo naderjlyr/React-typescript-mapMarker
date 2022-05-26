@@ -51,10 +51,18 @@ function App() {
   };
 
   const deleteJobHandler = (job: TJobData) => {
-    const newJobs = searchedJobs.filter((originalJob) => {
+    const newJobs = jobs.filter((originalJob) => {
       return job.id !== originalJob.id;
     });
-    setSearchedJobs(newJobs);
+    setJobs(newJobs);
+    if (jobs.length === searchedJobs.length) {
+      setSearchedJobs(newJobs);
+    } else {
+      const newSearchedJobs = searchedJobs.filter((originalJob) => {
+        return job.id !== originalJob.id;
+      });
+      setSearchedJobs(newSearchedJobs);
+    }
   };
 
   const findJobPosition = (job: TJobData) => {
