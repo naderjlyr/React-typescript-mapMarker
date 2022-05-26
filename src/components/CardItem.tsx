@@ -1,6 +1,11 @@
-import React, { memo } from "react";
-import { TJobData } from "../types/api";
-import { Heading, Button, IconTextkernel } from "@textkernel/oneui";
+import React, { memo, useState } from "react";
+import { TJobData } from "../types/interfaces";
+import {
+  Heading,
+  Button,
+  IconTextkernel,
+  StepperButton,
+} from "@textkernel/oneui";
 interface Props {
   job: TJobData;
   onSelect: (job: TJobData) => void;
@@ -24,6 +29,13 @@ const CardItem = ({ job, onSelect, onRemove }: Props) => {
         </div>
       </div>
       <div className="right-content">
+        <StepperButton
+          disabled={false}
+          icon="minus"
+          onClick={function noRefCheck() {}}
+        />
+      </div>
+      <div className="bottom">
         <Button
           context="brand"
           disabled={false}
@@ -33,7 +45,7 @@ const CardItem = ({ job, onSelect, onRemove }: Props) => {
           size="normal"
           type="submit"
         >
-          Remove
+          Locate the Job
         </Button>
       </div>
     </div>

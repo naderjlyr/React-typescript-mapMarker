@@ -1,3 +1,5 @@
+//API Interfaces
+
 export enum EFetchState {
   DEFAULT = "DEFAULT",
   LOADING = "LOADING",

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { EFetchState, TJobData } from "../types/api";
+import { EFetchState, TJobData } from "../types/interfaces";
 import axiosClient from "../config/axiosClient";
 import uniqueId from "../helpers/id-generator";
 export function useFetchData() {

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useFetchData } from "./hooks/useApi";
-import { EFetchState, TJobData } from "./types/api";
+import { EFetchState, TJobData } from "./types/interfaces";
 import {
   LoadingSpinner,
   Header,
@@ -9,7 +9,7 @@ import {
   Input,
 } from "@textkernel/oneui";
 import { MemoizedCard } from "./components/CardItem";
-
+import LeafletMap from "./components/LeafletMap";
 import "@textkernel/oneui/dist/oneui.min.css";
 import "./App.scss";
 function App() {
@@ -20,32 +20,21 @@ function App() {
     console.log("something");
   }, []);
   return (
-    <>
+    <div className="app-container">
       <Header
         logo={{
           link: "/",
           src: "https://www.jobfeed.nl/images/jobfeed-logo.svg",
           title: "Jobfeed",
         }}
-      >
-        This is a placeholder for children
-      </Header>
+      ></Header>
+      <Heading align="left" context="default" level="h1">
+        <IconJobfeed context="info" size={48} title="Jobfeed" />
+        Latest <span>Jobs</span>
+      </Heading>
 
-      <div className="container">
-        <Heading align="left" context="default" level="h1">
-          <IconJobfeed context="info" size={48} title="Jobfeed" />
-          Latest <span>Jobs</span>
-        </Heading>
-        <Input
-          context={undefined}
-          disabled={false}
-          isBlock={false}
-          onChange={function noRefCheck() {}}
-          placeholder="Some text goes here..."
-          size="normal"
-          type="text"
-        />
-        <div className="listing-container">
+      <div className="main-content">
+        <div className="job-listing">
           {fetchState === EFetchState.LOADING && (
             <LoadingSpinner
               centerIn={"viewport"}
@@ -71,9 +60,9 @@ function App() {
               />
             ))}
         </div>
-        <div className="map-container">Map To Show</div>
+        <LeafletMap />
       </div>
-    </>
+    </div>
   );
 }
 

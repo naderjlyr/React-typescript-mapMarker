@@ -54,12 +54,14 @@ iframe {
   border: 0;
 }
 
-.container {
-  max-width: 1600px;
+.app-container {
+  background-color: $body-bg;
   display: flex;
   flex-direction: column;
-  gap: 30px;
-  padding: 3%;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
 }
 
 .mb-3 {
@@ -74,12 +76,22 @@ iframe {
 
 //Custom Layout Properties
 
-.listing-container {
-  display: flex;
-  flex-direction: column;
-  width: 40%;
+.main-content {
   align-items: center;
-  gap: 20px;
+  display: flex;
+  flex: 1 1;
+  flex-direction: row;
+  justify-content: space-around;
+  position: relative;
+  .job-listing {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 30%;
+    overflow-y: scroll;
+    height: 100vh;
+  }
   .cm-card-item {
     display: flex;
     width: 100%;
@@ -89,6 +101,8 @@ iframe {
     padding: 30px;
     border-radius: 20px;
     box-shadow: 0px 4px 5px 5px #f3f3fb;
+    flex-wrap: wrap;
+    gap: 20px;
     .left-content {
       display: flex;
       flex-direction: row;
@@ -97,5 +111,19 @@ iframe {
     .right-content {
       display: flex;
     }
+    .bottom {
+      flex-basis: 100%;
+    }
   }
 }
+
+// .map-container {
+//   height: 100%;
+//   width: 100%;
+// }
+
+// @media (max-width: 767px) {
+//   .map-container {
+//     width: 100vw;
+//   }
+// }
