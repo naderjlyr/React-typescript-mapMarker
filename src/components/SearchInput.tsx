@@ -15,7 +15,8 @@ const SearchInput = ({ onSearch }: IProps) => {
   return (
     <>
       <Input
-        data-testid="search-bar"
+        aria-label="search-input"
+        data-testid="search-input"
         disabled={false}
         isBlock={false}
         value={searchPhrase}
@@ -26,7 +27,7 @@ const SearchInput = ({ onSearch }: IProps) => {
         type="search"
       />
       <SearchButton
-        data-testid="search-button"
+        data-testid="search-icon"
         disabled={false}
         onClick={() => onSearch(searchPhrase)}
         type="submit"

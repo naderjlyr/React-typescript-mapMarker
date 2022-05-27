@@ -4,7 +4,7 @@ import axiosClient from "../config/axiosClient";
 export function useFetchData() {
   const [fetchState, setFetchState] = useState(EFetchState.DEFAULT);
   const [fetchedJobs, setFetchedJobs] = useState<TJobData[]>([]);
-  //   const [jobs, setJobs] = useState<Array<TJobData>>([]);
+  const [jobs, setJobs] = useState<Array<TJobData>>([]);
 
   const getJobs = useCallback(async (url: string, applyData: Function) => {
     try {
@@ -12,6 +12,7 @@ export function useFetchData() {
       const res = await axiosClient.get(url);
       const resData = res.data as Array<TJobData>;
       applyData(resData);
+      setJobs(resData);
       setFetchState(EFetchState.SUCCESS);
     } catch (err) {
       setFetchState(EFetchState.ERROR);

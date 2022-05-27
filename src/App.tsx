@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useFetchData } from "./hooks/useApi";
+import { useFetchData } from "./hooks/useFetchData";
 import { EFetchState, TJobData, TJobPosition } from "./types/data-models";
 import {
   LoadingSpinner,
