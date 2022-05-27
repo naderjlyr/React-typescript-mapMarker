@@ -23,7 +23,7 @@ const SearchInput = ({ onSearch }: IProps) => {
         onChange={(e) => setSearchPhrase(e.target.value)}
         onKeyPress={searchText}
         placeholder="Search by Job Title or Organization Name..."
-        size="large"
+        size="normal"
         type="search"
       />
       <SearchButton

@@ -77,7 +77,12 @@ iframe {
 //Custom Layout Properties
 .cm-search-container {
   input {
+    transition: width 0.2s ease-in;
+    width: 60%;
     margin-right: 10px;
+    &:focus {
+      width: 85%;
+    }
   }
 }
 .main-content {
