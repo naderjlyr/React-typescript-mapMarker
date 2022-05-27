@@ -11,8 +11,8 @@ const dummyData: TJobData = {
 };
 
 describe("Card Item Component", () => {
-  it("should render job data correctly", () => {
-    const { getByText } = render(
+  test("should render job data correctly", () => {
+    render(
       <CardItem job={dummyData} onSelect={() => {}} onRemove={() => {}} />
     );
 
@@ -20,8 +20,8 @@ describe("Card Item Component", () => {
     expect(screen.getByText(dummyData.organization_name)).toBeInTheDocument();
   });
 
-  it("should have a button to find the job in the map", () => {
-    const { getByText } = render(
+  test("should have a button to find the job in the map", () => {
+    render(
       <CardItem job={dummyData} onSelect={() => {}} onRemove={() => {}} />
     );
 
