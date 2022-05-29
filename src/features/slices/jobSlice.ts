@@ -68,6 +68,7 @@ const jobSlice = createSlice({
         );
         state.jobs = dataWithID;
         state.searchResult = dataWithID;
+
         state.status = FetchStatus.SUCCESS;
         // state.error = null;
       }

@@ -60,6 +60,3 @@ const CardItem: React.FC<IProps> = ({ job }: IProps) => {
 };
 
 export default CardItem;
-// export const MemoizedCard = memo(CardItem, (prevProps, nextProps) => {
-//   return Object.is(prevProps, nextProps);
-// });

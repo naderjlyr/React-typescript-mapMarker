@@ -31,6 +31,12 @@ describe("jobSlice reducers and Thunk Actions test", () => {
       lng: 4.93727226228314,
     },
     searchResult: [],
+    pagination: {
+      totalItems: 0,
+      currentPage: 1,
+      totalPages: 0,
+      itemPerPage: 5,
+    },
   };
   describe("Thunk Actions (Extra Reducers)", () => {
     test("sets loading true when retrieveJobs is pending", () => {
