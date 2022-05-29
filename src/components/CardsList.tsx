@@ -7,15 +7,22 @@ import {
   Header,
   Heading,
   IconJobfeed,
-  ContentPlaceholder,
 } from "@textkernel/oneui";
-import { RootState, selectJobs, useAppDispatch } from "../features/store";
+import ContentPlaceHolder from "./ContentPlaceHolder";
+import {
+  RootState,
+  selectJobs,
+  selectJobsStatus,
+  useAppDispatch,
+} from "../features/store";
 import { useSelector } from "react-redux";
-import { JobData } from "../models/job.model";
+import { FetchStatus, JobData } from "../models/job.model";
+
 const CardsList = () => {
   const [searchValue, setSearchValue] = useState<string>("");
-
+  const jobFetchStatus = useSelector(selectJobsStatus);
   const dispatch = useAppDispatch();
+
   const jobs = useSelector((state: RootState) => {
     if (searchValue.length === 0) {
       return state.jobs.jobs;
@@ -29,6 +36,7 @@ const CardsList = () => {
       );
     });
   });
+
   const renderJobItems = jobs.map((job: JobData) => {
     return <CardItem key={job.id} job={job} />;
   });
@@ -40,13 +48,9 @@ const CardsList = () => {
     initFetch();
   }, [dispatch]);
 
-  useEffect(() => {
-    console.log("Kboom!");
-  }, [jobs]);
   const filterBySearch = (searchQuery: string) => {
     setSearchValue(searchQuery);
   };
-  // setSearchedJobs(searchFilter);
 
   return (
     <>
@@ -54,29 +58,8 @@ const CardsList = () => {
         <div className="cm-search-container">
           <SearchInput onSearch={filterBySearch} />
         </div>
+        {<ContentPlaceHolder fetchState={jobFetchStatus} />}
         {renderJobItems}
-        {/* {fetchState === FetchStatus.LOADING && (
-        <>
-          <ContentPlaceholder
-            duration={1}
-            height={undefined}
-            width={100}
-            withoutMargin={false}
-          />
-          <ContentPlaceholder
-            duration={1}
-            height={undefined}
-            width={55}
-            withoutMargin={false}
-          />
-          <ContentPlaceholder
-            duration={1}
-            height={undefined}
-            width={65}
-            withoutMargin
-          />
-        </>
-      )} */}
       </div>
     </>
   );

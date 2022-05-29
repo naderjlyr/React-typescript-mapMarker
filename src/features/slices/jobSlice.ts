@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import uniqueId from "../../helpers/id-generator";
-import { JobData, JobPosition } from "../../models/job.model";
+import { JobData, JobPosition, FetchStatus } from "../../models/job.model";
 import JobService from "../services/JobService";
 export const retrieveJobs = createAsyncThunk<JobData[]>(
   "jobs/getAll",
@@ -12,7 +12,7 @@ export const retrieveJobs = createAsyncThunk<JobData[]>(
 
 export interface InitialState {
   jobs: JobData[];
-  status: "done" | "idle" | "loading";
+  status: FetchStatus;
   error: string | null;
   isActiveOnMap: number;
   targetedLocation: JobPosition;
@@ -21,7 +21,7 @@ export interface InitialState {
 
 const initialState: InitialState = {
   jobs: [],
-  status: "idle",
+  status: FetchStatus.DEFAULT,
   error: null,
   isActiveOnMap: 0,
   targetedLocation: {
@@ -65,10 +65,10 @@ const jobSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(retrieveJobs.rejected, (state, action) => {
       state.error = action.error.message || "error";
-      state.status = "idle";
+      state.status = FetchStatus.DEFAULT;
     });
     builder.addCase(retrieveJobs.pending, (state) => {
-      state.status = "loading";
+      state.status = FetchStatus.LOADING;
       state.error = null;
     });
     builder.addCase(
@@ -79,7 +79,7 @@ const jobSlice = createSlice({
         );
         state.jobs = dataWithID;
         state.searchResult = dataWithID;
-        state.status = "done";
+        state.status = FetchStatus.SUCCESS;
         state.error = null;
       }
     );

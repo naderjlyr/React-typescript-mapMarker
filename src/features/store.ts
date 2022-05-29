@@ -10,6 +10,7 @@ const store = configureStore({
 
 export type RootState = ReturnType<typeof store.getState>;
 export const selectJobs = (state: RootState) => state.jobs.jobs;
+export const selectJobsStatus = (state: RootState) => state.jobs.status;
 export const selectTargetJob = (state: RootState) =>
   state.jobs.targetedLocation;
 export const selectSearchResult = (state: RootState) => state.jobs.searchResult;
