@@ -1,9 +1,9 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import CardItem from "../../components/CardItem";
-import { TJobData } from "../../types/data-models";
+import { JobData } from "../../models/job.model";
 
-const dummyData: TJobData = {
+const dummyData: JobData = {
   id: 123,
   job_title: "an example job title",
   organization_name: "an example organization name",
@@ -12,19 +12,12 @@ const dummyData: TJobData = {
 
 describe("Card Item Component", () => {
   test("should render job data correctly", () => {
-    render(
-      <CardItem job={dummyData} onSelect={() => {}} onRemove={() => {}} />
-    );
-
+    render(<CardItem job={dummyData} />);
     expect(screen.getByText(dummyData.job_title)).toBeInTheDocument();
     expect(screen.getByText(dummyData.organization_name)).toBeInTheDocument();
   });
-
   test("should have a button to find the job in the map", () => {
-    render(
-      <CardItem job={dummyData} onSelect={() => {}} onRemove={() => {}} />
-    );
-
+    render(<CardItem job={dummyData} />);
     expect(screen.getByText("Locate the Job")).toBeInTheDocument();
   });
 });

@@ -1,47 +1,50 @@
 import { memo } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import Leaflet from "leaflet";
-
-import { TJobData, TJobPosition } from "../types/data-models";
+import { selectTargetJob, useAppDispatch } from "../features/store";
 import "leaflet/dist/leaflet.css";
 import pinFile from "../assets/images/pin.svg";
-interface IProps {
-  location: TJobPosition<number>;
-  job: TJobData;
-  position?: TJobPosition<number>;
-}
-function SelectedJobMarker({ location }: any) {
-  const map = useMap();
-  map.flyTo(location, map.getZoom());
-  return null;
-}
-const pinIcon = Leaflet.icon({
-  iconUrl: pinFile,
-  iconSize: [58, 68],
-  iconAnchor: [29, 68],
-  popupAnchor: [0, -75],
-});
-const LeafletMap = ({ location, job, position }: IProps) => {
+import { useSelector } from "react-redux";
+
+const LeafletMap = () => {
+  const chosenPosition = useSelector(selectTargetJob);
+
+  const SelectedJobMarker = (location: any) => {
+    const map = useMap();
+    map.flyTo([chosenPosition.lat, chosenPosition.lng], map.getZoom());
+    return null;
+  };
+  const pinIcon = Leaflet.icon({
+    iconUrl: pinFile,
+    iconSize: [50, 50],
+    iconAnchor: [29, 68],
+    popupAnchor: [0, -75],
+  });
+
   return (
     <MapContainer
-      center={[52.390741909089954, 4.937249840694807]}
-      zoom={13}
+      center={[chosenPosition.lat, chosenPosition.lng]}
+      zoom={15}
       scrollWheelZoom={false}
       style={{ width: "100%", height: "100%" }}
     >
       <TileLayer url="https://api.mapbox.com/styles/v1/naderjlyr/cl3m5g2a1005s15od3r2nfrr5/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibmFkZXJqbHlyIiwiYSI6ImNsM200YjhkMTAxODMzamxuOWJybTk5OXgifQ.Ros4f-cCXwiakGLffDXibQ" />
-      {position && (
-        <Marker icon={pinIcon} position={position}>
+      {
+        <Marker
+          icon={pinIcon}
+          position={[chosenPosition.lat, chosenPosition.lng]}
+        >
           <Popup closeButton={true}>
             <div>
-              <h3>{job.job_title}</h3>
-              <p>{job.organization_name}</p>
+              <h3>{chosenPosition.job_title}</h3>
+              <p>{chosenPosition.organization_name}</p>
+              <p>{chosenPosition.location_coordinates}</p>
             </div>
           </Popup>
         </Marker>
-      )}
+      }
 
-      <SelectedJobMarker location={location} />
+      <SelectedJobMarker location={[chosenPosition.lat, chosenPosition.lng]} />
     </MapContainer>
   );
 };
