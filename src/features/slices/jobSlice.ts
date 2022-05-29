@@ -50,26 +50,15 @@ const jobSlice = createSlice({
         lng: Number(payload.location_coordinates[1]),
       };
     },
-    filterBySearch(state, action) {
-      const searchFilter = state.jobs.filter((job) => {
-        return (
-          job?.organization_name
-            ?.toLowerCase()
-            .includes(action.payload.toLowerCase()) ||
-          job?.job_title?.toLowerCase().includes(action.payload.toLowerCase())
-        );
-      });
-      state.searchResult = searchFilter;
-    },
   },
   extraReducers: (builder) => {
     builder.addCase(retrieveJobs.rejected, (state, action) => {
-      state.error = action.error.message || "error";
+      // state.error = "ERROR";
       state.status = FetchStatus.DEFAULT;
     });
     builder.addCase(retrieveJobs.pending, (state) => {
       state.status = FetchStatus.LOADING;
-      state.error = null;
+      // state.error = null;
     });
     builder.addCase(
       retrieveJobs.fulfilled,
@@ -80,7 +69,7 @@ const jobSlice = createSlice({
         state.jobs = dataWithID;
         state.searchResult = dataWithID;
         state.status = FetchStatus.SUCCESS;
-        state.error = null;
+        // state.error = null;
       }
     );
   },

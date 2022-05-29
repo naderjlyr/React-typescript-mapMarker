@@ -1,9 +1,11 @@
+import store from "./features/store";
 import { Header } from "@textkernel/oneui";
 import CardsList from "./components/CardsList";
 import MemoizedMap from "./components/LeafletMap";
 import "@textkernel/oneui/dist/oneui.min.css";
 import "./App.scss";
-function App() {
+import { Provider } from "react-redux";
+export function App() {
   return (
     <div className="app-container">
       <Header
@@ -22,4 +24,10 @@ function App() {
   );
 }
 
-export default App;
+const AppWrapper = () => (
+  <Provider store={store}>
+    <App />
+  </Provider>
+);
+
+export default AppWrapper;

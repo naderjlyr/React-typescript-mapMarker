@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card Item Component should render job data correctly 1`] = `
+<DocumentFragment>
+  <div
+    class="cm-card-item"
+  >
+    <div
+      class="left-content"
+    >
+      <div
+        class="IconBase--3tiBSsND2A IconBase--context_primary--2U2j03XMQL"
+      >
+        <svg
+          aria-labelledby="title"
+          class="IconBase__svg--GubJhAYC9j"
+          role="img"
+          style="width: 48px; height: 48px;"
+          viewBox="0 0 369.7 800"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title>
+            Textkernel
+          </title>
+          <path
+            d="M334.3,800C203.4,766.9,89.9,681.8,89.9,543.8V248.3H0v-104H89.9V0H223.1V144.2H349.2v104H223.1V554c0,76.5,56.7,109.6,146.6,130.8Z"
+          />
+        </svg>
+      </div>
+      <div
+        class="company-name"
+      >
+        <h4
+          class="Heading--6KJ2J_DIuG Heading--level_h4--2hAygTxBFc"
+        >
+          an example organization name
+        </h4>
+      </div>
+      <div
+        class="job-name"
+      >
+        <h4
+          class="Heading--6KJ2J_DIuG Heading--level_h4--2hAygTxBFc"
+        >
+          an example job title
+        </h4>
+      </div>
+    </div>
+    <div
+      class="bottom"
+    >
+      <button
+        class="Button--15fub36KGi Button--context_primary--RCe9SRC0ZW"
+        type="submit"
+      >
+        Locate the Job
+      </button>
+      <button
+        class="Button--15fub36KGi Button--context_bad--26Pck_OeL0"
+        type="submit"
+      >
+        Delete
+      </button>
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -10,7 +10,7 @@ export interface JobData {
   id?: number;
   job_title: string;
   organization_name: string;
-  location_coordinates?: number[];
+  location_coordinates?: number | string[];
 }
 
 export interface JobPosition extends JobData {

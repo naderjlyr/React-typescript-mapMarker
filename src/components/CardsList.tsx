@@ -1,28 +1,16 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import CardItem from "./CardItem";
 import SearchInput from "./SearchInput";
 import { retrieveJobs } from "../features/slices/jobSlice";
-import {
-  LoadingSpinner,
-  Header,
-  Heading,
-  IconJobfeed,
-} from "@textkernel/oneui";
 import ContentPlaceHolder from "./ContentPlaceHolder";
-import {
-  RootState,
-  selectJobs,
-  selectJobsStatus,
-  useAppDispatch,
-} from "../features/store";
+import { RootState, selectJobsStatus, useAppDispatch } from "../features/store";
 import { useSelector } from "react-redux";
-import { FetchStatus, JobData } from "../models/job.model";
+import { JobData } from "../models/job.model";
 
 const CardsList = () => {
   const [searchValue, setSearchValue] = useState<string>("");
   const jobFetchStatus = useSelector(selectJobsStatus);
   const dispatch = useAppDispatch();
-
   const jobs = useSelector((state: RootState) => {
     if (searchValue.length === 0) {
       return state.jobs.jobs;
