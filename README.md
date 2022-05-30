@@ -7,20 +7,14 @@
 ## Functionality (All the main functionalities are covered)
 
 - [x] The user should be presented with a nice overview of jobs
-  - [x] the task is completed and in the main page of the app, users will be presented with a nice overview of jobs.
 - [x] The user should be able to filter jobs "on the fly" by job title or organisation name
-  - [x] Users are able to filter jobs by title or organization name.
 - [x] The user should be able to remove one or more jobs from the list
-  - [x] all the jobs can be removed by user by provided button next to each job card.
 - [x] Unit tests - at least 1 or 2 tests, to demonstrate your approach to testing
-  - [x] Unit tests are provided for 2 components, 1 Store slice (Redux Toolkit), and 1 Custom hook (pagination).
 
 ### Optional features (only if you have time left)
 
 - [x] Clicking on a job should point its location on a map. You can use any map service (Google Maps, Leaflet etc.).
-  - [x] implemented successfully using (React-Leaflet and leaflet map)
 - [x] Result pagination
-  - [x] Results are now paginated. default numbers can be set in the "CardsList" component
 
 ## Requirements & Instruction
 
