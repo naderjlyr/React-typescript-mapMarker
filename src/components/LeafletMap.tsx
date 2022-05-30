@@ -1,7 +1,7 @@
 import { memo } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
 import Leaflet from "leaflet";
-import { selectTargetJob, useAppDispatch } from "../features/store";
+import { selectTargetJob } from "../features/store";
 import "leaflet/dist/leaflet.css";
 import pinFile from "../assets/images/pin.svg";
 import { useSelector } from "react-redux";
@@ -26,7 +26,7 @@ const LeafletMap = () => {
       center={[chosenPosition.lat, chosenPosition.lng]}
       zoom={15}
       scrollWheelZoom={false}
-      style={{ width: "100%", height: "100%" }}
+      style={{ display: "flex", width: "100%", height: "100%" }}
     >
       <TileLayer url="https://api.mapbox.com/styles/v1/naderjlyr/cl3m5g2a1005s15od3r2nfrr5/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibmFkZXJqbHlyIiwiYSI6ImNsM200YjhkMTAxODMzamxuOWJybTk5OXgifQ.Ros4f-cCXwiakGLffDXibQ" />
       {

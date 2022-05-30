@@ -27,6 +27,6 @@ describe("Card Item Component", () => {
 
     //Checking for two buttons for the card appearing in the snapshot
     expect(screen.getByText(/Locate the Job/i)).toBeInTheDocument();
-    expect(screen.getByText(/Delete/i)).toBeInTheDocument();
+    expect(screen.getByTestId("remove-button")).toBeInTheDocument();
   });
 });

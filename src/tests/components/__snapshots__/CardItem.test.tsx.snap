@@ -5,62 +5,84 @@ exports[`Card Item Component should render job data correctly 1`] = `
   <div
     class="cm-card-item"
   >
-    <div
-      class="left-content"
+    <svg
+      class="cm-remove-button"
+      color="#03002e"
+      data-testid="remove-button"
+      fill="currentColor"
+      height="1em"
+      stroke="currentColor"
+      stroke-width="0"
+      style="color: rgb(3, 0, 46);"
+      viewBox="0 0 448 512"
+      width="1em"
+      xmlns="http://www.w3.org/2000/svg"
     >
-      <div
-        class="IconBase--3tiBSsND2A IconBase--context_primary--2U2j03XMQL"
-      >
-        <svg
-          aria-labelledby="title"
-          class="IconBase__svg--GubJhAYC9j"
-          role="img"
-          style="width: 48px; height: 48px;"
-          viewBox="0 0 369.7 800"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <title>
-            Textkernel
-          </title>
-          <path
-            d="M334.3,800C203.4,766.9,89.9,681.8,89.9,543.8V248.3H0v-104H89.9V0H223.1V144.2H349.2v104H223.1V554c0,76.5,56.7,109.6,146.6,130.8Z"
-          />
-        </svg>
-      </div>
+      <path
+        d="M416 208H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h384c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z"
+      />
+    </svg>
+    <div
+      class="card-body"
+    >
       <div
         class="company-name"
       >
-        <h4
-          class="Heading--6KJ2J_DIuG Heading--level_h4--2hAygTxBFc"
+        <svg
+          color="#03002e"
+          fill="currentColor"
+          height="1em"
+          stroke="currentColor"
+          stroke-width="0"
+          style="color: rgb(3, 0, 46);"
+          viewBox="0 0 448 512"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M436 480h-20V24c0-13.255-10.745-24-24-24H56C42.745 0 32 10.745 32 24v456H12c-6.627 0-12 5.373-12 12v20h448v-20c0-6.627-5.373-12-12-12zM128 76c0-6.627 5.373-12 12-12h40c6.627 0 12 5.373 12 12v40c0 6.627-5.373 12-12 12h-40c-6.627 0-12-5.373-12-12V76zm0 96c0-6.627 5.373-12 12-12h40c6.627 0 12 5.373 12 12v40c0 6.627-5.373 12-12 12h-40c-6.627 0-12-5.373-12-12v-40zm52 148h-40c-6.627 0-12-5.373-12-12v-40c0-6.627 5.373-12 12-12h40c6.627 0 12 5.373 12 12v40c0 6.627-5.373 12-12 12zm76 160h-64v-84c0-6.627 5.373-12 12-12h40c6.627 0 12 5.373 12 12v84zm64-172c0 6.627-5.373 12-12 12h-40c-6.627 0-12-5.373-12-12v-40c0-6.627 5.373-12 12-12h40c6.627 0 12 5.373 12 12v40zm0-96c0 6.627-5.373 12-12 12h-40c-6.627 0-12-5.373-12-12v-40c0-6.627 5.373-12 12-12h40c6.627 0 12 5.373 12 12v40zm0-96c0 6.627-5.373 12-12 12h-40c-6.627 0-12-5.373-12-12V76c0-6.627 5.373-12 12-12h40c6.627 0 12 5.373 12 12v40z"
+          />
+        </svg>
+        <h5
+          class="Heading--6KJ2J_DIuG Heading--level_h5--3RKhUnz9Kk"
         >
           an example organization name
-        </h4>
+        </h5>
       </div>
       <div
         class="job-name"
       >
-        <h4
-          class="Heading--6KJ2J_DIuG Heading--level_h4--2hAygTxBFc"
+        <svg
+          color="#03002e"
+          fill="currentColor"
+          height="1em"
+          stroke="currentColor"
+          stroke-width="0"
+          style="color: rgb(3, 0, 46);"
+          viewBox="0 0 640 512"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M496 224c-79.59 0-144 64.41-144 144s64.41 144 144 144 144-64.41 144-144-64.41-144-144-144zm64 150.29c0 5.34-4.37 9.71-9.71 9.71h-60.57c-5.34 0-9.71-4.37-9.71-9.71v-76.57c0-5.34 4.37-9.71 9.71-9.71h12.57c5.34 0 9.71 4.37 9.71 9.71V352h38.29c5.34 0 9.71 4.37 9.71 9.71v12.58zM496 192c5.4 0 10.72.33 16 .81V144c0-25.6-22.4-48-48-48h-80V48c0-25.6-22.4-48-48-48H176c-25.6 0-48 22.4-48 48v48H48c-25.6 0-48 22.4-48 48v80h395.12c28.6-20.09 63.35-32 100.88-32zM320 96H192V64h128v32zm6.82 224H208c-8.84 0-16-7.16-16-16v-48H0v144c0 25.6 22.4 48 48 48h291.43C327.1 423.96 320 396.82 320 368c0-16.66 2.48-32.72 6.82-48z"
+          />
+        </svg>
+        <h5
+          class="Heading--6KJ2J_DIuG Heading--level_h5--3RKhUnz9Kk"
         >
           an example job title
-        </h4>
+        </h5>
       </div>
-    </div>
-    <div
-      class="bottom"
-    >
-      <button
-        class="Button--15fub36KGi Button--context_primary--RCe9SRC0ZW"
-        type="submit"
+      <div
+        class="bottom"
       >
-        Locate the Job
-      </button>
-      <button
-        class="Button--15fub36KGi Button--context_bad--26Pck_OeL0"
-        type="submit"
-      >
-        Delete
-      </button>
+        <button
+          class="Button--15fub36KGi Button--context_neutral--3HTMLfjsDY"
+          type="submit"
+        >
+          Locate the Job
+        </button>
+      </div>
     </div>
   </div>
 </DocumentFragment>

@@ -16,9 +16,12 @@ export function App() {
           title: "Jobfeed",
         }}
       ></Header>
+
       <div className="main-content">
         <CardsList />
-        <MemoizedMap />
+        <div className="map-container">
+          <MemoizedMap />
+        </div>
       </div>
     </div>
   );
