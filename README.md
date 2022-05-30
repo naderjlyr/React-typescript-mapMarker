@@ -30,7 +30,7 @@ the reason that I liked to use RTK is to first I started to make the app, the nu
 
 ### 3. CSS and styling.
 
-I used OneUI as you send the link, I found it a really good library to work with. I managed to make the best out of it and use the components when is needed. In addition, for the skeleton of the app and the layout I wrote a responsive pure css. The app works good on Mobile and Tablet, as well as Desktop.
+I used OneUI, and I found it a really good library to work with. I managed to make the best out of it and use the components when is needed. In addition, for the skeleton of the app and the layout I wrote a responsive pure css. The app works good on Mobile and Tablet, as well as Desktop.
 As the main part of the styling, I used SCSS SASS preprocessor. I always use this technology when I'm thinking about the future of the app, and how scalable it is. sass giving me the opportunity to write clean and organized and nested properties for styling. In some cases only css can handle toggles and responsive menus without thinking that much about the javascript behind the scene. Bottom line, I tried to come with a simple UI and I hope it will be pleasant for you.
 
 ### 4. Map
