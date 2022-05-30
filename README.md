@@ -1,5 +1,7 @@
 # Programming assignment - Jobfeed Frontend developer
-
+## Demo
+I deployed the application on firebase. 
+[Demo](http://textkernel-react-app.web.app/).
 ## Data
 
 - [x] The Data is being fetched as indicated in the Assignment.md with us.jubfeed.com api.
@@ -75,9 +77,10 @@ git clone https://gitlab.com/textkernel-pub/jobfeed/assignments/jobfeed-assignme
 npm install     (install the dependency packages)
 npm start       (start the application by default , http://localhost:3000)
 npm test        (for runing the test units)
-
-
-
-
-
 ```
+
+## Demo
+I deployed the application on firebase. 
+[Demo](http://textkernel-react-app.web.app/).
+
+
