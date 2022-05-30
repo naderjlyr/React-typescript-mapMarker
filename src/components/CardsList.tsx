@@ -97,7 +97,7 @@ const CardsList = () => {
               set(page);
             }
           }}
-          align="center"
+          align="left"
           currentPage={current}
           maxPageButtons={pages}
           totalPages={pages}
@@ -112,7 +112,7 @@ const CardsList = () => {
               set(page);
             }
           }}
-          align="center"
+          align="left"
           currentPage={current}
           maxPageButtons={pages}
           totalPages={pages}
