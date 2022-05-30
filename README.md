@@ -1,46 +1,89 @@
-# Getting Started with Create React App
+# Programming assignment - Jobfeed Frontend developer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Data
 
-## Available Scripts
+- [x] The Data is being fetched as indicated in the Assignment.md with us.jubfeed.com api.
 
-In the project directory, you can run:
+## Functionality (All the main functionalities are covered)
 
-### `npm start`
+- [x] The user should be presented with a nice overview of jobs
+  - [x] the task is completed and in the main page of the app, users will be presented with a nice overview of jobs.
+- [x] The user should be able to filter jobs "on the fly" by job title or organisation name
+  - [x] Users are able to filter jobs by title or organization name.
+- [x] The user should be able to remove one or more jobs from the list
+  - [x] all the jobs can be removed by user by provided button next to each job card.
+- [x] Unit tests - at least 1 or 2 tests, to demonstrate your approach to testing
+  - [x] Unit tests are provided for 2 components, 1 Store slice (Redux Toolkit), and 1 Custom hook (pagination).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Optional features (only if you have time left)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- [x] Clicking on a job should point its location on a map. You can use any map service (Google Maps, Leaflet etc.).
+  - [x] implemented successfully using (React-Leaflet and leaflet map)
+- [x] Result pagination
+  - [x] Results are now paginated. default numbers can be set in the "CardsList" component
 
-### `npm test`
+## Requirements & Instruction
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 1. axios for calling API.
 
-### `npm run build`
+I use axios package to sending requests to api. I also could use Fetch api of the javascript, but since I really used to work with axios, I felt that It will speed up the process.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 2. State Management
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+the reason that I liked to use RTK is to first I started to make the app, the number of local states was getting out of hand, and I wanted to prevent props drilling through the app. I also considered to use Context Api. However, I was thinking about the code readability and future development so I decided to go with RTK.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 3. CSS and styling.
 
-### `npm run eject`
+I used OneUI as you send the link, I found it a really good library to work with. I managed to make the best out of it and use the components when is needed. In addition, for the skeleton of the app and the layout I wrote a responsive pure css. The app works good on Mobile and Tablet, as well as Desktop.
+As the main part of the styling, I used SCSS SASS preprocessor. I always use this technology when I'm thinking about the future of the app, and how scalable it is. sass giving me the opportunity to write clean and organized and nested properties for styling. In some cases only css can handle toggles and responsive menus without thinking that much about the javascript behind the scene. Bottom line, I tried to come with a simple UI and I hope it will be pleasant for you.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### 4. Map
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+I used "Leaflet & React-Leaflet & MapBox Tiles" maps. I found this package a really good one for testing and playing with maps over the Google Maps Api. since Google Maps recently limited its services for development purposes, I decided to go with Leaflet and using one of MapBox Tile templates I made.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### 5. Unit Test
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+React testing library and jest are two unit test purposes. I provided 4 test files (2 Components, 1 Custom Hook, and 1 Store Slice). All test are passed and wrote somehow to test some simple functionalities of components.
 
-## Learn More
+# Features
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## displaying the latest jobs available on API.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+    axios fetches latest jobs from the Api, saving them in "jobSlice" in the main store. Since the API doesn't return any unique id for jobs, I wrote a simple helper function for generating unique ids for each job after data successfully fetched. the pattern of the generated ids are simple and can be changed in the related file. src/helper/id-generator.ts. Now we have the data, it's time to display them on the main page of the app.
+
+    There are two components are being given the responsibility. 1. "CardsList" for listing jobs and other related components. 2. CardItem which is the component for each job.
+
+## Pagination
+
+    with a combination of OneUI pagination component and a custom hook named "usePagination" src/hooks/usePagination.tsx, I managed to paginate the jobs.
+
+## Search
+
+    Users can filter jobs by searching through the search input. By entering Job title or Organization name and pressing "Enter" or Click.
+
+## Remove jobs
+
+    Users can remove each job by clicking on the minus icon in each job card.
+
+## Locating job on map
+
+    There is a button available for every job. By clicking on it, the map will fly to lat and lon provided for each job. In addition, it displays a pin marker on the map and you can see details for each job by clicking on the pin.
+
+# Installation
+
+### whether download zip file or clone the "dev" branch from the repository
+
+```git
+git clone https://gitlab.com/textkernel-pub/jobfeed/assignments/jobfeed-assignment-nader-jalayeri.git
+```
+
+```node
+npm install     (install the dependency packages)
+npm start       (start the application by default , http://localhost:3000)
+npm test        (for runing the test units)
+
+
+
+
+
+```
