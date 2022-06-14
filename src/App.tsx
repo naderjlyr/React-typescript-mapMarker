@@ -10,11 +10,6 @@ export function App() {
     <div className="app-container">
       <Header
         className="cm-header"
-        logo={{
-          link: "/",
-          src: "https://www.jobfeed.nl/images/jobfeed-logo.svg",
-          title: "Jobfeed",
-        }}
       ></Header>
 
       <div className="main-content">
