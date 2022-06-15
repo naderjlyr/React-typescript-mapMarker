@@ -38,8 +38,14 @@ const jobSlice = createSlice({
   name: "jobs",
   initialState,
   reducers: {
-    onRemove(state, action) {
-      state.jobs = state.jobs.filter((job) => job.id !== action.payload);
+    onRemove(state, { payload }) {
+      return {
+        ...state,
+        jobs: [...state.jobs].filter((job) => job.id !== payload),
+        searchResult: [...state.searchResult].filter(
+          (job) => job.id !== payload
+        ),
+      };
     },
     findPosition(state, { payload }) {
       state.targetedLocation = {
@@ -50,15 +56,28 @@ const jobSlice = createSlice({
         lng: Number(payload.location_coordinates[1]),
       };
     },
+
+    searchResult(state, { payload }) {
+      const searchedJobs = state.jobs.filter(
+        (job) =>
+          job?.job_title?.toLowerCase().includes(payload.toLowerCase()) ||
+          job?.organization_name
+            ?.toLocaleLowerCase()
+            .includes(payload.toLocaleLowerCase())
+      );
+      return {
+        ...state,
+        searchResult:
+          payload.length >= 0 ? searchedJobs : [...state.searchResult],
+      };
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(retrieveJobs.rejected, (state, action) => {
-      // state.error = "ERROR";
       state.status = FetchStatus.DEFAULT;
     });
     builder.addCase(retrieveJobs.pending, (state) => {
       state.status = FetchStatus.LOADING;
-      // state.error = null;
     });
     builder.addCase(
       retrieveJobs.fulfilled,
@@ -70,7 +89,6 @@ const jobSlice = createSlice({
         state.searchResult = dataWithID;
 
         state.status = FetchStatus.SUCCESS;
-        // state.error = null;
       }
     );
   },

@@ -26,7 +26,7 @@ describe("jobSlice reducers and Thunk Actions test", () => {
     targetedLocation: {
       id: 0,
       job_title: "Frontend Developer",
-      organization_name: "Textkernel",
+      organization_name: "freelancer",
       lat: 52.39058850930055,
       lng: 4.93727226228314,
     },

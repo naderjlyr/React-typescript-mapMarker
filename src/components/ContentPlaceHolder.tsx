@@ -1,14 +1,13 @@
 import { ContentPlaceholder } from "@textkernel/oneui";
 import React from "react";
+import { useSelector } from "react-redux";
+import { selectJobsStatus } from "../features/store";
 import { FetchStatus } from "../models/job.model";
-type Props = {
-  fetchState: string;
-};
-
-const ContentPlaceHolder: React.FC<Props> = ({ fetchState }: Props) => {
+const ContentPlaceHolder: React.FC = () => {
+  const jobStatus = useSelector(selectJobsStatus);
   return (
     <>
-      {fetchState === FetchStatus.LOADING && (
+      {jobStatus === FetchStatus.LOADING && (
         <>
           <ContentPlaceholder
             duration={1}

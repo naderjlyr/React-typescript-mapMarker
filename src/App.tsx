@@ -10,6 +10,11 @@ export function App() {
     <div className="app-container">
       <Header
         className="cm-header"
+        logo={{
+          link: "/",
+          src: "https://www.reshot.com/download/icons/BSFLAQ93J7/reshot-icon-maps-BSFLAQ93J7.svg",
+          title: "Jobfeed",
+        }}
       ></Header>
 
       <div className="main-content">

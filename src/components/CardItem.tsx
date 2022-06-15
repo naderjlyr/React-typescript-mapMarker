@@ -1,14 +1,14 @@
 import { FaBuilding, FaBusinessTime, FaMinus } from "react-icons/fa";
 import { JobData } from "../models/job.model";
 import { Heading, Button } from "@textkernel/oneui";
-import { useAppDispatch } from "../features/store";
 import { jobActions } from "../features/slices/jobSlice";
-import {  MouseEvent } from "react";
+import { MouseEvent } from "react";
+import { useDispatch } from "react-redux";
 interface IProps {
   job: JobData;
 }
 const CardItem: React.FC<IProps> = ({ job }: IProps) => {
-  const dispatch = useAppDispatch();
+  const dispatch = useDispatch();
   const removeHandler = () => {
     dispatch(jobActions.onRemove(job.id));
   };

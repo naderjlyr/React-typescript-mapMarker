@@ -1,12 +1,11 @@
 import { useState, useEffect } from "react";
 import CardItem from "./CardItem";
 import SearchInput from "./SearchInput";
-import { jobActions, retrieveJobs } from "../features/slices/jobSlice";
+import { retrieveJobs } from "../features/slices/jobSlice";
 import ContentPlaceHolder from "./ContentPlaceHolder";
 import { IoSearchCircleSharp, IoClose } from "react-icons/io5";
 import {
-  RootState,
-  selectJobsStatus,
+  selectSearchResult,
   selectTargetJob,
   useAppDispatch,
 } from "../features/store";
@@ -16,25 +15,12 @@ import usePagination from "../hooks/usePagination";
 import { Pagination } from "@textkernel/oneui";
 import { useMediaQuery } from "react-responsive";
 const CardsList = () => {
-  const [searchValue, setSearchValue] = useState<string>("");
   const [boxToggle, setBoxToggle] = useState<boolean>(true);
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 1024px)" });
-  const jobFetchStatus = useSelector(selectJobsStatus);
   const dispatch = useAppDispatch();
   const targetJob = useSelector(selectTargetJob);
-  const jobs = useSelector((state: RootState) => {
-    if (searchValue.length === 0) {
-      return state.jobs.jobs;
-    }
-    return state.jobs.jobs.filter((job) => {
-      return (
-        job?.organization_name
-          ?.toLowerCase()
-          .includes(searchValue.toLowerCase()) ||
-        job?.job_title?.toLowerCase().includes(searchValue.toLowerCase())
-      );
-    });
-  });
+  const jobs = useSelector(selectSearchResult);
+
   const { current, pages, display, set } = usePagination({
     items: jobs,
     size: 10,
@@ -43,21 +29,18 @@ const CardsList = () => {
     return <CardItem key={job.id} job={job} />;
   });
 
-  const initFetch = async () => {
-    await dispatch(retrieveJobs());
-  };
   useEffect(() => {
-    initFetch();
+    const fetchJobs = async () => {
+      await dispatch(retrieveJobs());
+    };
+    fetchJobs();
   }, [dispatch]);
+
   useEffect(() => {
     return () => {
       setBoxToggle(!boxToggle);
     };
-  }, [targetJob]);
-
-  const filterBySearch = (searchQuery: string) => {
-    setSearchValue(searchQuery);
-  };
+  }, [targetJob, boxToggle]);
 
   return (
     <>
@@ -87,7 +70,7 @@ const CardsList = () => {
           ""
         )}
         <div className="cm-search-container">
-          <SearchInput onSearch={filterBySearch} />
+          <SearchInput />
         </div>
         <Pagination
           onClick={(e, page) => {
@@ -102,7 +85,7 @@ const CardsList = () => {
           maxPageButtons={pages}
           totalPages={pages}
         />
-        {<ContentPlaceHolder fetchState={jobFetchStatus} />}
+        {<ContentPlaceHolder />}
         {renderJobItems}
         <Pagination
           onClick={(e, page) => {
