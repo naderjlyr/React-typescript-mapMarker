@@ -1,4 +1,4 @@
-# Programming assignment - Jobfeed Frontend developer
+# mapMarker simple project.
 ## Demo
 I deployed the application on firebase. 
 [Demo](http://textkernel-react-app.web.app/).
