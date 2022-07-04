@@ -1,7 +1,7 @@
 # mapMarker simple project.
 ## Demo
 I deployed the application on firebase. 
-[Demo](http://textkernel-react-app.web.app/).
+[Demo](https://mapmarker-react.web.app/)
 ## Data
 
 - [x] The Data is being fetched as indicated in the Assignment.md with us.jubfeed.com api.
@@ -81,6 +81,6 @@ npm test        (for runing the test units)
 
 ## Demo
 I deployed the application on firebase. 
-[Demo](http://textkernel-react-app.web.app/).
+[Demo](https://mapmarker-react.web.app/)
 
 
